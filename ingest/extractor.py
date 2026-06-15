@@ -7,6 +7,13 @@ load_dotenv()
 
 client = Anthropic()
 
+# Normalise entity names to lower case and strip whitespace (assists with matching entities in Neo4j)
+
+def normalise_entity_name(name):
+    return name.lower().strip()
+
+# Extracts entities and relationships from a markdown file using the Anthropic API
+
 def extract_entities_and_relationships(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
@@ -54,8 +61,14 @@ Documentation:
         print(f"Warning: Could not parse JSON from response")
         result = {"entities": [], "relationships": []}
 
-    return result    
+    for entity in result['entities']:
+        entity['name'] = normalise_entity_name(entity['name'])
 
+    for rel in result['relationships']:
+        rel['source'] = normalise_entity_name(rel['source'])
+        rel['target'] = normalise_entity_name(rel['target'])
+
+    return result    
 
 if __name__ == "__main__":
     test_file = os.path.expanduser("~/Documents/github/sn-docs/markdown/now-intelligence/now-assist-explorer.md")
