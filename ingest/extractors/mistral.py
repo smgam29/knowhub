@@ -31,18 +31,29 @@ Text: {content}""",
         })
 
         # Parse response
-        raw = response.json()["response"].strip()
-        raw = raw.strip().removeprefix("```json").removeprefix("```").removesuffix("```").strip()
+        try:
+            raw = response.json()["response"].strip()
+            start = raw.find("{")
+            end = raw.rfind("}") + 1
+            raw = raw[start:end]
 
-        result = json.loads(raw)
+
+        # Fix invalid escape sequences
+            raw = raw.replace("\\", "\\\\")
+
+            result = json.loads(raw)
 
         # Normalise entity names and relationship source/target
-        for entity in result.get("entities", []):
-            entity["name"] = entity["name"].lower().strip()
+            for entity in result.get("entities", []):
+                entity["name"] = entity["name"].lower().strip()
 
-        for rel in result.get("relationships", []):
-            rel["source"] = rel["source"].lower().strip()
-            rel["target"] = rel["target"].lower().strip()
-            rel["type"] = rel["type"].upper().strip()
+            for rel in result.get("relationships", []):
+                rel["source"] = rel["source"].lower().strip()
+                rel["target"] = rel["target"].lower().strip()
+                rel["type"] = rel["type"].upper().strip()
 
-        return result
+            return result
+        
+        except Exception as e:
+            print(f"    Mistral parse failed: {e} — skipping")
+            return {"entities": [], "relationships": []}
