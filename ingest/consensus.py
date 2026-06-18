@@ -67,12 +67,12 @@ class ConsensusExtractor:
 
 if __name__ == "__main__":
     from extractors.claude import ClaudeExtractor
-    from extractors.mistral import MistralExtractor
+    from extractors.gemma import GemmaExtractor
     from reconcilers.mistral import MistralReconciler
     from loader import write_to_neo4j, driver
 
     extractor = ConsensusExtractor(
-        extractors=[ClaudeExtractor(), MistralExtractor()],
+        extractors=[ClaudeExtractor(), GemmaExtractor()],
         reconciler=MistralReconciler(),
         runs_per_model=2
     )
