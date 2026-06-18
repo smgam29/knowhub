@@ -13,9 +13,9 @@ class MistralExtractor(BaseExtractor):
         self.url = "http://localhost:11434/api/generate"
 
     def extract(self, file_path: str) -> dict:
-        # Read and truncate file content
-        with open(file_path, "r", encoding="utf-8") as f:
-            content = f.read()[:3000]
+   # Extract clean text via preprocessor
+        from preprocessor import preprocess
+        content = preprocess(file_path)[:3000]
 
         # Call Ollama REST API
         response = requests.post(self.url, json={
