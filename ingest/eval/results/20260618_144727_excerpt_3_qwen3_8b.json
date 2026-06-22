@@ -1,0 +1,22 @@
+{
+  "model": "qwen3:8b",
+  "excerpt": "excerpt_3",
+  "expected_knowledge_type": "Contextual",
+  "runs": [
+    {
+      "run": 1,
+      "success": false,
+      "error": "'\\n  \"knowledge_type\"'"
+    },
+    {
+      "run": 2,
+      "success": false,
+      "error": "'\\n  \"knowledge_type\"'"
+    },
+    {
+      "run": 3,
+      "success": false,
+      "error": "'\\n  \"knowledge_type\"'"
+    }
+  ]
+}

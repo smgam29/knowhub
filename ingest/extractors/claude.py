@@ -17,9 +17,9 @@ class ClaudeExtractor(BaseExtractor):
         self.model = "claude-haiku-4-5-20251001"
 
     def extract(self, file_path: str) -> dict:
-        # Read and truncate file content
-        with open(file_path, "r", encoding="utf-8") as f:
-            content = f.read()[:3000]
+       # Extract clean text via preprocessor
+        from preprocessor import preprocess
+        content = preprocess(file_path)[:3000]
 
         # Call Claude Haiku
         response = self.client.messages.create(

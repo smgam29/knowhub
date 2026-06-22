@@ -1,0 +1,256 @@
+{
+  "model": "gpt-oss:20b",
+  "excerpt": "excerpt_3",
+  "expected_knowledge_type": "Contextual",
+  "runs": [
+    {
+      "run": 1,
+      "success": true,
+      "output": {
+        "knowledge_type": "Procedural",
+        "entities": [
+          {
+            "name": "guardian",
+            "type": "Product"
+          },
+          {
+            "name": "now assist",
+            "type": "Product"
+          },
+          {
+            "name": "offensiveness filter",
+            "type": "Feature"
+          },
+          {
+            "name": "prompt injection detection",
+            "type": "Feature"
+          },
+          {
+            "name": "sensitivity detection",
+            "type": "Feature"
+          },
+          {
+            "name": "enable guardian",
+            "type": "Decision",
+            "decision_type": "Process"
+          },
+          {
+            "name": "compliance policy content filtering",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "legal policy content filtering",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "security policy content filtering",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "customer acceptance of latency",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "customer acceptance of false positives",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "content filtering enabled",
+            "type": "Outcome"
+          },
+          {
+            "name": "increased latency in va responses",
+            "type": "Outcome"
+          },
+          {
+            "name": "legitimate query interception",
+            "type": "Outcome"
+          },
+          {
+            "name": "guardian integration with now assist",
+            "type": "Integration"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "enable guardian offensiveness filter",
+            "type": "PRODUCES",
+            "target": "content filtering enabled"
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "source": "enable guardian",
+            "relationship_type": "TRADEOFF",
+            "target": "increased latency in va responses",
+            "reason": "cannot fully quantify cost severity"
+          }
+        ]
+      }
+    },
+    {
+      "run": 2,
+      "success": true,
+      "output": {
+        "knowledge_type": "Procedural",
+        "entities": [
+          {
+            "name": "now assist",
+            "type": "Product"
+          },
+          {
+            "name": "guardian",
+            "type": "Feature"
+          },
+          {
+            "name": "offensiveness filter",
+            "type": "Feature"
+          },
+          {
+            "name": "prompt injection detection",
+            "type": "Feature"
+          },
+          {
+            "name": "sensitivity detection",
+            "type": "Feature"
+          },
+          {
+            "name": "enable guardian",
+            "type": "Decision",
+            "decision_type": "Configuration"
+          },
+          {
+            "name": "project sponsor",
+            "type": "Persona"
+          },
+          {
+            "name": "compliance requirement",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "latency acceptance",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "false positive acceptance",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "ai content filtering",
+            "type": "Concept"
+          },
+          {
+            "name": "guardian intercepts offensive content",
+            "type": "Outcome"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "enable guardian",
+            "type": "REQUIRES",
+            "target": "compliance requirement"
+          },
+          {
+            "source": "enable guardian",
+            "type": "REQUIRES",
+            "target": "latency acceptance"
+          },
+          {
+            "source": "enable guardian",
+            "type": "REQUIRES",
+            "target": "false positive acceptance"
+          },
+          {
+            "source": "enable guardian",
+            "type": "ENABLES",
+            "target": "guardian intercepts offensive content"
+          }
+        ],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "run": 3,
+      "success": true,
+      "output": {
+        "knowledge_type": "Procedural",
+        "entities": [
+          {
+            "name": "now_assist",
+            "type": "Product"
+          },
+          {
+            "name": "guardian",
+            "type": "Feature"
+          },
+          {
+            "name": "offensiveness_filter",
+            "type": "Feature"
+          },
+          {
+            "name": "prompt_injection_detection",
+            "type": "Feature"
+          },
+          {
+            "name": "sensitivity_detection",
+            "type": "Feature"
+          },
+          {
+            "name": "enable_guardian",
+            "type": "Decision",
+            "decision_type": "Configuration"
+          },
+          {
+            "name": "project_sponsor",
+            "type": "Persona"
+          },
+          {
+            "name": "explicit_compliance_requirement",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "latency_acceptance",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "false_positive_acceptance",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "guardian_configured",
+            "type": "Outcome"
+          },
+          {
+            "name": "ai_content_filtering",
+            "type": "Concept"
+          },
+          {
+            "name": "compliance_policy",
+            "type": "Concept"
+          }
+        ],
+        "relationships": [],
+        "knowledge_gaps": [
+          {
+            "source": "enable_guardian",
+            "relationship_type": "REQUIRES",
+            "target": "explicit_compliance_requirement",
+            "reason": "source does not include required Product and Feature entities"
+          },
+          {
+            "source": "enable_guardian",
+            "relationship_type": "PRODUCES",
+            "target": "guardian_configured",
+            "reason": "missing associated feature in source"
+          },
+          {
+            "source": "enable_guardian",
+            "relationship_type": "ENABLES",
+            "target": "guardian_configured",
+            "reason": "missing required source entities"
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+Common Pitfalls and How to Avoid Them
+
+- Prompt bloat: Agent becomes inconsistent as the prompt grows. Instructions contradict each other. How to avoid: Make surgical edits only. Test after every prompt change. Remove duplicates.
+- No empty result handling: Agent hallucinates data when a tool returns nothing. How to avoid: Include explicit empty result recovery for every tool. Return descriptive error objects.
+- Using GlideRecordSecure: Tool scripts return empty results due to session ACLs not applying in agent context. How to avoid: Always use GlideRecord. Implement security filtering directly in script.
+- Skipping UAT: Agent fails on real user input patterns not tested during build. How to avoid: Minimum two UAT cycles with scripted and unscripted testing.
+- Vague topic boundaries: Conversations route to wrong topics. Agent gives wrong answers. How to avoid: Distinct, non-overlapping trigger phrases. Test with ambiguous utterances.
+- No deflection tracking: Cannot demonstrate ROI. Customer loses confidence. How to avoid: Configure analytics dashboard before go-live. Start measuring from day one.
+- Over-scoping the first agent: Build takes too long. Deflection is low across all topics. How to avoid: Start with 3-5 topics maximum. Prove deflection before expanding.
+- Missing null checks: Script crashes on null field access. How to avoid: Null-check every field. Verify non-null before calling toString() or getDisplayValue().
+- No verification gates: Agent skips steps, uses incomplete data. How to avoid: Add a verification gate after every major step in the prompt.
+- Demo-quality mindset: Works in demos but fails with real users. How to avoid: Test edge cases, failure modes, multi-intent messages, and adversarial inputs.
+
+The Rules of Agent Building
+
+- Start with 3-5 topics maximum. Prove deflection before expanding scope.
+- Use verification gates after every major step in the prompt.
+- Use precise action keywords. Never use "handle," "process," or "deal with" in prompts.
+- Always include empty result recovery instructions for every tool.
+- Use GlideRecord in tool scripts. Never use GlideRecordSecure.
+- Null-check every field access in tool scripts before calling toString() or getDisplayValue().
+- Conduct a minimum of two UAT cycles with real users before go-live.
+- Configure deflection tracking before go-live, not after.
+- Make surgical prompt edits. Never add bulk guardrails or verbose instructions.
+- Test edge cases, failure modes, and adversarial inputs. Production quality, not demo quality.

@@ -1,0 +1,22 @@
+{
+  "model": "gpt-oss:20b",
+  "excerpt": "excerpt_1",
+  "expected_knowledge_type": "Comparative",
+  "runs": [
+    {
+      "run": 1,
+      "success": false,
+      "error": "'\\n  \"knowledge_type\"'"
+    },
+    {
+      "run": 2,
+      "success": false,
+      "error": "'\\n  \"knowledge_type\"'"
+    },
+    {
+      "run": 3,
+      "success": false,
+      "error": "'\\n  \"knowledge_type\"'"
+    }
+  ]
+}

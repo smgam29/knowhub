@@ -1,0 +1,40 @@
+Cost of Error Matrix, Autonomy Windows, and Agent Oversight Controls
+
+These concepts are operationally interdependent. Cost of Error classification drives the Autonomy Window assignment, which determines the agent oversight controls required before activation. Oversight is enforced through two mechanisms: Supervised Mode at the tool level, and Evaluation Benchmarks as sponsor-approved gates for advancing autonomy. All assignments must be documented and sponsor-approved before any agent is activated.
+
+Cost of Error Matrix
+
+Classify each agent based on the business impact of an incorrect or unrecoverable action:
+
+- Quick Win: Errors are low-stakes and easily corrected. No downstream impact. Example: Password reset, incident status check, FAQ response
+- Pilot Lab: Errors have moderate impact but are recoverable with manual intervention. Example: HR policy inquiry, leave of absence guidance
+- Efficiency Engine: Errors have significant operational or financial impact. Recovery requires effort. Example: Hardware procurement, software entitlement allocation
+- Strategic Tier: Errors have high business, legal, or compliance impact. Recovery may be impossible or costly. Example: Contract changes, regulated HR actions, financial transactions
+
+Autonomy Window (Crawl / Walk / Run)
+
+The Autonomy Window defines how independently an agent acts. Assign based on Cost of Error tier:
+
+- Crawl: Agent surfaces recommendations only. A human reviews and executes every action. When to use: All new deployments at go-live regardless of tier. Strategic Tier agents permanently unless explicitly advanced.
+- Walk: Agent executes actions but requires human approval before any irreversible step. When to use: Efficiency Engine agents, or any action that modifies records or initiates fulfillment workflows.
+- Run: Agent executes fully autonomously without human intervention. When to use: Quick Win and Pilot Lab agents only, after 30-day post-go-live review confirms accuracy meets threshold.
+
+Never advance an agent from Crawl to Walk or Run without a formal 30-day review and sponsor sign-off. Do not skip directly to Run at go-live under any circumstance.
+
+Supervised Mode
+
+Supervised Mode is configured at the tool level in AI Agent guided setup. When set to Supervised, the tool requires human approval before executing.
+
+- Strategic Tier: Required on all tools. No tool should execute autonomously until the agent has passed 30-day production review.
+- Efficiency Engine: Required on any tool that modifies records, initiates fulfillment, or has financial impact.
+- Quick Win / Pilot Lab: Optional. Apply selectively to tools that submit or update records until accuracy is proven.
+
+Evaluation Score Benchmarks
+
+Before advancing an agent from Crawl to Walk or Run autonomy, Agentic Evaluation scores must meet minimum benchmarks agreed upon with the customer sponsor. These are not platform-enforced — they are governance decisions documented in the Success Charter before go-live.
+
+- Strategic Tier: Set a high bar. Errors have compliance or business impact that may be unrecoverable.
+- Efficiency Engine: Set a moderate-to-high bar. Errors require manual effort to reverse.
+- Quick Win / Pilot Lab: Set a baseline that reflects acceptable performance for low-stakes, easily corrected actions.
+
+Benchmarks must be defined, documented, and sponsor-signed before the first evaluation run. Do not advance autonomy based on anecdotal feedback — scores must be measured against the agreed benchmark.

@@ -1,0 +1,17 @@
+Now Assist Guardian Configuration (Use Only If Explicitly Required)
+
+Guardian introduces latency into every VA response and has a known high false positive rate that can intercept legitimate HR and IT queries. Enable it only if the customer has an explicit compliance, legal, or security requirement that mandates AI content filtering.
+
+Before enabling, confirm with the Project Sponsor:
+- Is there a specific compliance, legal, or security policy that requires AI content filtering on VA responses?
+- Has the customer accepted that Guardian will add latency to every VA interaction?
+- Has the customer accepted that legitimate queries on sensitive topics may be incorrectly intercepted and will require tuning?
+
+If all three are confirmed and Guardian is required:
+
+- Navigate to Now Assist Admin Console > Guardian (or Safety Filters, depending on release)
+- Configure Offensiveness filter: detects inappropriate responses including profanity and toxicity — enable for all customer-facing VA interactions
+- Configure Prompt Injection detection: detects malicious prompts that attempt to bypass AI instructions or generate undesired outputs
+- Configure Sensitivity detection: flags responses that may contain sensitive data before they reach the end user
+- Test: submit a deliberately inappropriate prompt to the VA — confirm Guardian intercepts and does not return the offensive content
+- Validation: Confirm all three filters show as active in the Guardian dashboard. Document the test result for the go-live checklist.

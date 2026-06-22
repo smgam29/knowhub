@@ -1,0 +1,313 @@
+{
+  "model": "phi4:14b",
+  "excerpt": "excerpt_1",
+  "expected_knowledge_type": "Comparative",
+  "runs": [
+    {
+      "run": 1,
+      "success": true,
+      "output": {
+        "knowledge_type": "Procedural",
+        "entities": [
+          {
+            "name": "cost of error matrix",
+            "type": "concept"
+          },
+          {
+            "name": "autonomy window assignment",
+            "type": "decision",
+            "decision_type": "Configuration"
+          },
+          {
+            "name": "agent oversight controls",
+            "type": "concept"
+          },
+          {
+            "name": "supervised mode",
+            "type": "feature"
+          },
+          {
+            "name": "evaluation benchmarks",
+            "type": "concept"
+          },
+          {
+            "name": "quick win",
+            "type": "outcome"
+          },
+          {
+            "name": "pilot lab",
+            "type": "outcome"
+          },
+          {
+            "name": "efficiency engine",
+            "type": "outcome"
+          },
+          {
+            "name": "strategic tier",
+            "type": "outcome"
+          },
+          {
+            "name": "crawl",
+            "type": "prerequisite"
+          },
+          {
+            "name": "walk",
+            "type": "prerequisite"
+          },
+          {
+            "name": "run",
+            "type": "prerequisite"
+          },
+          {
+            "name": "30-day post-go-live review",
+            "type": "prerequisite"
+          },
+          {
+            "name": "human approval",
+            "type": "feature"
+          },
+          {
+            "name": "agentic evaluation scores",
+            "type": "concept"
+          },
+          {
+            "name": "success charter",
+            "type": "document"
+          },
+          {
+            "name": "business impact",
+            "type": "concept"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "cost of error matrix",
+            "type": "REQUIRES",
+            "target": "autonomy window assignment"
+          },
+          {
+            "source": "autonomy window assignment",
+            "type": "ENABLES",
+            "target": "agent oversight controls"
+          },
+          {
+            "source": "autonomy window assignment",
+            "type": "RECOMMENDED_WHEN",
+            "target": "supervised mode",
+            "context": "enforced at tool level for strategic tier agents until 30-day review is passed",
+            "confidence": "HIGH"
+          },
+          {
+            "source": "cost of error matrix",
+            "type": "IMPACTS",
+            "target": "business impact",
+            "direction": "POSITIVE",
+            "severity": "MEDIUM"
+          },
+          {
+            "source": "30-day post-go-live review",
+            "type": "REQUIRES",
+            "target": "human approval"
+          },
+          {
+            "source": "evaluation benchmarks",
+            "type": "RECOMMENDED_WHEN",
+            "target": "agentic evaluation scores",
+            "context": "before advancing agent autonomy from Crawl to Walk or Run",
+            "confidence": "HIGH"
+          }
+        ],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "run": 2,
+      "success": true,
+      "output": {
+        "knowledge_type": "Procedural",
+        "entities": [
+          {
+            "name": "cost of error matrix",
+            "type": "concept"
+          },
+          {
+            "name": "autonomy window assignment",
+            "type": "decision",
+            "decision_type": "Process"
+          },
+          {
+            "name": "agent oversight controls",
+            "type": "feature"
+          },
+          {
+            "name": "supervised mode",
+            "type": "integration"
+          },
+          {
+            "name": "evaluation benchmarks",
+            "type": "concept"
+          },
+          {
+            "name": "sponsor approval",
+            "type": "prerequisite"
+          },
+          {
+            "name": "strategic tier agent",
+            "type": "persona"
+          },
+          {
+            "name": "efficiency engine agent",
+            "type": "persona"
+          },
+          {
+            "name": "quick win pilot lab agent",
+            "type": "persona"
+          },
+          {
+            "name": "cost of error classification",
+            "type": "concept"
+          },
+          {
+            "name": "autonomy window tiers (crawl, walk, run)",
+            "type": "feature"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "cost of error matrix",
+            "type": "REQUIRES",
+            "target": "agent oversight controls"
+          },
+          {
+            "source": "cost of error classification",
+            "type": "REQUIRES",
+            "target": "autonomy window assignment"
+          },
+          {
+            "source": "strategic tier agent",
+            "type": "REQUIRES",
+            "target": "supervised mode"
+          },
+          {
+            "source": "efficiency engine agent",
+            "type": "REQUIRES",
+            "target": "evaluation benchmarks"
+          },
+          {
+            "source": "autonomy window assignment",
+            "type": "ENABLES",
+            "target": "agent oversight controls"
+          },
+          {
+            "source": "sponsor approval",
+            "type": "PRODUCES",
+            "target": "agent activation",
+            "properties": {
+              "likelihood": "HIGH",
+              "notes": "Sponsor sign-off is necessary for agent activation."
+            }
+          },
+          {
+            "source": "evaluation benchmarks",
+            "type": "RECOMMENDED_WHEN",
+            "target": "autonomy window assignment",
+            "properties": {
+              "context": "before advancing autonomy level",
+              "confidence": "HIGH"
+            }
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "source": "cost of error classification",
+            "relationship_type": "TRADEOFF",
+            "target": "outcome",
+            "reason": "Unable to specify specific 'gives' and 'costs'."
+          }
+        ]
+      }
+    },
+    {
+      "run": 3,
+      "success": true,
+      "output": {
+        "knowledge_type": "Procedural",
+        "entities": [
+          {
+            "name": "cost of error matrix",
+            "type": "concept"
+          },
+          {
+            "name": "autonomy window",
+            "type": "concept"
+          },
+          {
+            "name": "agent oversight controls",
+            "type": "concept"
+          },
+          {
+            "name": "supervised mode",
+            "type": "feature"
+          },
+          {
+            "name": "evaluation score benchmarks",
+            "type": "prerequisite"
+          },
+          {
+            "name": "sponsor approval",
+            "type": "decision",
+            "decision_type": "governance"
+          },
+          {
+            "name": "ai agent guided setup",
+            "type": "integration"
+          },
+          {
+            "name": "quick win",
+            "type": "outcome"
+          },
+          {
+            "name": "pilot lab",
+            "type": "outcome"
+          },
+          {
+            "name": "efficiency engine",
+            "type": "outcome"
+          },
+          {
+            "name": "strategic tier",
+            "type": "outcome"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "cost of error matrix",
+            "type": "REQUIRES",
+            "target": "autonomy window"
+          },
+          {
+            "source": "autonomy window",
+            "type": "ENABLES",
+            "target": "agent oversight controls"
+          },
+          {
+            "source": "sponsor approval",
+            "type": "PERFORMED_BY",
+            "target": "sponsors"
+          },
+          {
+            "source": "evaluation score benchmarks",
+            "type": "REQUIRES",
+            "target": "sponsor approval"
+          },
+          {
+            "source": "supervised mode",
+            "type": "REQUIRES",
+            "target": "cost of error matrix"
+          }
+        ],
+        "knowledge_gaps": []
+      }
+    }
+  ]
+}

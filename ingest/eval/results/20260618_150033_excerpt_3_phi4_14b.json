@@ -1,0 +1,271 @@
+{
+  "model": "phi4:14b",
+  "excerpt": "excerpt_3",
+  "expected_knowledge_type": "Contextual",
+  "runs": [
+    {
+      "run": 1,
+      "success": true,
+      "output": {
+        "knowledge_type": "Procedural",
+        "entities": [
+          {
+            "name": "now assist guardian configuration",
+            "type": "concept"
+          },
+          {
+            "name": "project sponsor",
+            "type": "persona"
+          },
+          {
+            "name": "compliance, legal, or security policy",
+            "type": "prerequisite"
+          },
+          {
+            "name": "ai content filtering on va responses",
+            "type": "feature"
+          },
+          {
+            "name": "latency",
+            "type": "outcome"
+          },
+          {
+            "name": "offensiveness filter",
+            "type": "feature"
+          },
+          {
+            "name": "prompt injection detection",
+            "type": "feature"
+          },
+          {
+            "name": "sensitivity detection",
+            "type": "feature"
+          },
+          {
+            "name": "intercept legitimate queries",
+            "type": "outcome"
+          },
+          {
+            "name": "now assist admin console > guardian (or safety filters)",
+            "type": "product"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "now assist guardian configuration",
+            "type": "requires",
+            "target": "compliance, legal, or security policy"
+          },
+          {
+            "source": "offensiveness filter",
+            "type": "enabled_by",
+            "target": "ai content filtering on va responses"
+          },
+          {
+            "source": "prompt injection detection",
+            "type": "enabled_by",
+            "target": "ai content filtering on va responses"
+          },
+          {
+            "source": "sensitivity detection",
+            "type": "enabled_by",
+            "target": "ai content filtering on va responses"
+          },
+          {
+            "source": "now assist guardian configuration",
+            "type": "impacts",
+            "target": "latency, intercept legitimate queries"
+          },
+          {
+            "source": "project sponsor confirmation",
+            "type": "performed_by",
+            "target": "project sponsor"
+          }
+        ],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "run": 2,
+      "success": true,
+      "output": {
+        "knowledge_type": "Procedural",
+        "entities": [
+          {
+            "name": "now assist",
+            "type": "Product"
+          },
+          {
+            "name": "guardian configuration",
+            "type": "Decision",
+            "decision_type": "Configuration"
+          },
+          {
+            "name": "compliance, legal, or security requirement",
+            "type": "Concept"
+          },
+          {
+            "name": "project sponsor",
+            "type": "Persona"
+          },
+          {
+            "name": "offensiveness filter",
+            "type": "Feature"
+          },
+          {
+            "name": "prompt injection detection",
+            "type": "Feature"
+          },
+          {
+            "name": "sensitivity detection",
+            "type": "Feature"
+          },
+          {
+            "name": "now assist admin console",
+            "type": "Product"
+          },
+          {
+            "name": "go-live checklist",
+            "type": "Outcome"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "guardian configuration",
+            "type": "REQUIRES",
+            "target": "compliance, legal, or security requirement"
+          },
+          {
+            "source": "enable guardian configuration",
+            "type": "REQUIRES",
+            "target": "confirmation from project sponsor"
+          },
+          {
+            "source": "guardian configuration",
+            "type": "ENABLES",
+            "target": "offensiveness filter, prompt injection detection, sensitivity detection"
+          },
+          {
+            "source": "configure offensiveness filter",
+            "type": "PERFORMED_BY",
+            "target": "now assist admin console"
+          },
+          {
+            "source": "configure prompt injection detection",
+            "type": "PERFORMED_BY",
+            "target": "now assist admin console"
+          },
+          {
+            "source": "configure sensitivity detection",
+            "type": "PERFORMED_BY",
+            "target": "now assist admin console"
+          },
+          {
+            "source": "test and validation steps",
+            "type": "PRODUCES",
+            "target": "go-live checklist documentation",
+            "properties": {
+              "likelihood": "HIGH"
+            }
+          }
+        ],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "run": 3,
+      "success": true,
+      "output": {
+        "knowledge_type": "Procedural",
+        "entities": [
+          {
+            "name": "now assist",
+            "type": "Product"
+          },
+          {
+            "name": "guardian configuration",
+            "type": "Feature"
+          },
+          {
+            "name": "project sponsor confirmation",
+            "type": "Decision",
+            "decision_type": "Governance"
+          },
+          {
+            "name": "compliance, legal, or security policy",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "customer acceptance of latency and false positives",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "latency in va interaction",
+            "type": "Outcome"
+          },
+          {
+            "name": "false positive interception",
+            "type": "Outcome"
+          },
+          {
+            "name": "offensiveness filter configuration",
+            "type": "Feature"
+          },
+          {
+            "name": "prompt injection detection",
+            "type": "Feature"
+          },
+          {
+            "name": "sensitivity detection",
+            "type": "Feature"
+          },
+          {
+            "name": "va testing for inappropriate prompts",
+            "type": "Procedural Step"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "guardian configuration",
+            "type": "REQUIRES",
+            "target": "compliance, legal, or security policy"
+          },
+          {
+            "source": "guardian configuration",
+            "type": "REQUIRES",
+            "target": "customer acceptance of latency and false positives"
+          },
+          {
+            "source": "offensiveness filter configuration",
+            "type": "ENABLES",
+            "target": "safe va interactions"
+          },
+          {
+            "source": "prompt injection detection",
+            "type": "ENABLES",
+            "target": "secure ai responses"
+          },
+          {
+            "source": "sensitivity detection",
+            "type": "ENABLES",
+            "target": "protected data handling"
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "source": "guardian configuration",
+            "relationship_type": "TRADEOFF",
+            "target": "",
+            "reason": "Unable to populate both gives and costs for this decision."
+          },
+          {
+            "source": "project sponsor confirmation",
+            "relationship_type": "RECOMMENDED_WHEN",
+            "target": "guardian configuration",
+            "reason": "Lack of explicit context details on when exactly the recommendation applies."
+          }
+        ]
+      }
+    }
+  ]
+}

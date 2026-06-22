@@ -1,0 +1,306 @@
+{
+  "model": "phi4:14b",
+  "excerpt": "excerpt_2",
+  "expected_knowledge_type": "Diagnostic",
+  "runs": [
+    {
+      "run": 1,
+      "success": true,
+      "output": {
+        "knowledge_type": "Procedural",
+        "entities": [
+          {
+            "name": "prompt",
+            "type": "Feature"
+          },
+          {
+            "name": "GlideRecordSecure",
+            "type": "Product"
+          },
+          {
+            "name": "GlideRecord",
+            "type": "Product"
+          },
+          {
+            "name": "user acceptance testing (UAT)",
+            "type": "Process"
+          },
+          {
+            "name": "deflection tracking",
+            "type": "Concept"
+          },
+          {
+            "name": "null checks",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "verification gates",
+            "type": "Feature"
+          },
+          {
+            "name": "analytics dashboard",
+            "type": "Integration"
+          },
+          {
+            "name": "agent",
+            "type": "Product"
+          },
+          {
+            "name": "test cases",
+            "type": "Concept"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "Make surgical edits only",
+            "type": "REQUIRES",
+            "target": "prompt"
+          },
+          {
+            "source": "Include explicit empty result recovery for every tool",
+            "type": "REQUIRES",
+            "target": "user acceptance testing (UAT)"
+          },
+          {
+            "source": "Always use GlideRecord",
+            "type": "RECOMMENDED_WHEN",
+            "target": "GlideRecordSecure"
+          },
+          {
+            "source": "Implement security filtering directly in script",
+            "type": "PERFORMED_BY",
+            "target": "agent"
+          },
+          {
+            "source": "Minimum two UAT cycles with scripted and unscripted testing",
+            "type": "REQUIRES",
+            "target": "user acceptance testing (UAT)"
+          },
+          {
+            "source": "Configure deflection tracking before go-live, not after",
+            "type": "RECOMMENDED_WHEN",
+            "target": "deflection tracking"
+          },
+          {
+            "source": "Null-check every field access in tool scripts before calling toString() or getDisplayValue()",
+            "type": "REQUIRES",
+            "target": "null checks"
+          },
+          {
+            "source": "Conduct a minimum of two UAT cycles with real users before go-live",
+            "type": "RECOMMENDED_WHEN",
+            "target": "user acceptance testing (UAT)"
+          },
+          {
+            "source": "Add a verification gate after every major step in the prompt",
+            "type": "ENABLES",
+            "target": "verification gates"
+          }
+        ],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "run": 2,
+      "success": true,
+      "output": {
+        "knowledge_type": "Procedural",
+        "entities": [
+          {
+            "name": "glide_record_secure",
+            "type": "Product"
+          },
+          {
+            "name": "glide_record",
+            "type": "Feature"
+          },
+          {
+            "name": "empty_result_handling",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "u_a_t_cycles",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "deflection_tracking_configuration",
+            "type": "Outcome"
+          },
+          {
+            "name": "null_checks_in_scripts",
+            "type": "Feature"
+          },
+          {
+            "name": "verification_gates",
+            "type": "Feature"
+          },
+          {
+            "name": "surgical_prompt_edits",
+            "type": "Process"
+          },
+          {
+            "name": "agent_building_rules",
+            "type": "Concept"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "glide_record_secure",
+            "type": "CONFLICTS_WITH",
+            "target": "tool_scripts_with_empty_results"
+          },
+          {
+            "source": "empty_result_handling",
+            "type": "REQUIRES",
+            "target": "explicit_recovery_instructions"
+          },
+          {
+            "source": "u_a_t_cycles",
+            "type": "PRECEDES",
+            "target": "agent_deploy"
+          },
+          {
+            "source": "deflection_tracking_configuration",
+            "type": "ENABLES",
+            "target": "roi_demonstration"
+          },
+          {
+            "source": "null_checks_in_scripts",
+            "type": "REQUIRES",
+            "target": "non_null_verification_before_methods"
+          },
+          {
+            "source": "verification_gates",
+            "type": "ENABLS",
+            "target": "complete_data_usage_in_agent_prompts"
+          },
+          {
+            "source": "agent_building_rules",
+            "type": "RECOMMENDED_WHEN",
+            "target": "glide_record_secure_avoidance"
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "source": "prompt_bloat_avoidance",
+            "relationship_type": "TRADEOFF",
+            "target": "",
+            "reason": "Unable to populate both gives and costs."
+          },
+          {
+            "source": "surgical_prompt_edits",
+            "relationship_type": "TRADEOFF",
+            "target": "",
+            "reason": "Unable to populate both gives and costs."
+          }
+        ]
+      }
+    },
+    {
+      "run": 3,
+      "success": true,
+      "output": {
+        "knowledge_type": "Procedural",
+        "entities": [
+          {
+            "name": "prompt bloat",
+            "type": "Concept"
+          },
+          {
+            "name": "empty result handling",
+            "type": "Concept"
+          },
+          {
+            "name": "GlideRecordSecure",
+            "type": "Product Feature"
+          },
+          {
+            "name": "UAT (User Acceptance Testing)",
+            "type": "Process"
+          },
+          {
+            "name": "topic boundaries",
+            "type": "Concept"
+          },
+          {
+            "name": "deflection tracking",
+            "type": "Concept"
+          },
+          {
+            "name": "null checks",
+            "type": "Concept"
+          },
+          {
+            "name": "verification gates",
+            "type": "Feature"
+          },
+          {
+            "name": "demo-quality mindset",
+            "type": "Concept"
+          },
+          {
+            "name": "GlideRecord",
+            "type": "Product Feature"
+          },
+          {
+            "name": "deflection scope",
+            "type": "Concept"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "prompt bloat",
+            "type": "RECOMMENDED_WHEN",
+            "target": "surgical edits"
+          },
+          {
+            "source": "empty result handling",
+            "type": "REQUIRES",
+            "target": "explicit empty result recovery for every tool"
+          },
+          {
+            "source": "GlideRecordSecure",
+            "type": "CONFLICTS_WITH",
+            "target": "session ACLs in agent context"
+          },
+          {
+            "source": "UAT (User Acceptance Testing)",
+            "type": "REQUIRES",
+            "target": "two UAT cycles with scripted and unscripted testing"
+          },
+          {
+            "source": "topic boundaries",
+            "type": "RECOMMENDED_WHEN",
+            "target": "distinct, non-overlapping trigger phrases"
+          },
+          {
+            "source": "deflection tracking",
+            "type": "REQUIRES",
+            "target": "analytics dashboard configuration before go-live"
+          },
+          {
+            "source": "null checks",
+            "type": "REQUIRES",
+            "target": "field null-check before calling toString() or getDisplayValue()"
+          },
+          {
+            "source": "verification gates",
+            "type": "RECOMMENDED_WHEN",
+            "target": "add verification gate after every major step"
+          },
+          {
+            "source": "demo-quality mindset",
+            "type": "CONFLICTS_WITH",
+            "target": "real user testing"
+          },
+          {
+            "source": "GlideRecordSecure",
+            "type": "SUPERSEDES",
+            "target": "GlideRecord in tool scripts"
+          }
+        ],
+        "knowledge_gaps": []
+      }
+    }
+  ]
+}

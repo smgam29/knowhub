@@ -1,0 +1,326 @@
+{
+  "model": "qwen3:8b",
+  "excerpt": "excerpt_1",
+  "expected_knowledge_type": "Comparative",
+  "runs": [
+    {
+      "run": 1,
+      "success": true,
+      "output": {
+        "knowledge_type": "conceptual",
+        "entities": [
+          {
+            "name": "cost of error matrix",
+            "type": "concept"
+          },
+          {
+            "name": "autonomy window",
+            "type": "concept"
+          },
+          {
+            "name": "agent oversight controls",
+            "type": "concept"
+          },
+          {
+            "name": "supervised mode",
+            "type": "concept"
+          },
+          {
+            "name": "evaluation score benchmarks",
+            "type": "concept"
+          },
+          {
+            "name": "quick win",
+            "type": "feature"
+          },
+          {
+            "name": "pilot lab",
+            "type": "feature"
+          },
+          {
+            "name": "efficiency engine",
+            "type": "feature"
+          },
+          {
+            "name": "strategic tier",
+            "type": "feature"
+          },
+          {
+            "name": "advance agent from crawl to walk",
+            "type": "decision"
+          },
+          {
+            "name": "advance agent from crawl to run",
+            "type": "decision"
+          },
+          {
+            "name": "skip to run at go-live",
+            "type": "decision"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "cost of error matrix",
+            "type": "requires",
+            "target": "autonomy window"
+          },
+          {
+            "source": "autonomy window",
+            "type": "enables",
+            "target": "agent oversight controls"
+          },
+          {
+            "source": "cost of error matrix",
+            "type": "enables",
+            "target": "autonomy window"
+          },
+          {
+            "source": "autonomy window",
+            "type": "enables",
+            "target": "agent oversight controls"
+          },
+          {
+            "source": "strategic tier",
+            "type": "requires",
+            "target": "supervised mode"
+          },
+          {
+            "source": "efficiency engine",
+            "type": "requires",
+            "target": "supervised mode"
+          },
+          {
+            "source": "evaluation score benchmarks",
+            "type": "requires",
+            "target": "advance agent from crawl to walk"
+          },
+          {
+            "source": "evaluation score benchmarks",
+            "type": "requires",
+            "target": "advance agent from crawl to run"
+          },
+          {
+            "source": "skip to run at go-live",
+            "type": "conflicts_with",
+            "target": "advance agent from crawl to run",
+            "properties": {
+              "severity": "HIGH",
+              "notes": "formal 30-day review required"
+            }
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "source": "cost of error matrix",
+            "relationship_type": "tradeoff",
+            "target": "agent oversight controls",
+            "reason": "no explicit tradeoff details provided"
+          },
+          {
+            "source": "autonomy window",
+            "relationship_type": "tradeoff",
+            "target": "agent oversight controls",
+            "reason": "no explicit tradeoff details provided"
+          }
+        ]
+      }
+    },
+    {
+      "run": 2,
+      "success": true,
+      "output": {
+        "knowledge_type": "conceptual",
+        "entities": [
+          {
+            "name": "cost of error matrix",
+            "type": "concept"
+          },
+          {
+            "name": "autonomy window",
+            "type": "concept"
+          },
+          {
+            "name": "agent oversight controls",
+            "type": "outcome"
+          },
+          {
+            "name": "supervised mode",
+            "type": "feature"
+          },
+          {
+            "name": "evaluation benchmarks",
+            "type": "concept"
+          },
+          {
+            "name": "success charter",
+            "type": "prerequisite"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "cost of error matrix",
+            "type": "requires",
+            "target": "autonomy window"
+          },
+          {
+            "source": "autonomy window",
+            "type": "enables",
+            "target": "agent oversight controls"
+          },
+          {
+            "source": "supervised mode",
+            "type": "enables",
+            "target": "agent oversight controls"
+          },
+          {
+            "source": "evaluation benchmarks",
+            "type": "recommends_when",
+            "target": "autonomy window",
+            "properties": {
+              "context": "advancing autonomy",
+              "confidence": "high"
+            }
+          },
+          {
+            "source": "cost of error matrix",
+            "type": "impacts",
+            "target": "agent oversight controls",
+            "properties": {
+              "direction": "positive",
+              "severity": "medium"
+            }
+          },
+          {
+            "source": "autonomy window",
+            "type": "conflicts_with",
+            "target": "30-day review",
+            "properties": {
+              "severity": "medium",
+              "notes": "skipping review violates governance"
+            }
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "source": "autonomy window",
+            "relationship_type": "tradeoff",
+            "target": "agent oversight controls",
+            "reason": "no explicit gives/costs defined"
+          },
+          {
+            "source": "evaluation benchmarks",
+            "relationship_type": "tradeoff",
+            "target": "cost of error matrix",
+            "reason": "no explicit gives/costs defined"
+          }
+        ]
+      }
+    },
+    {
+      "run": 3,
+      "success": true,
+      "output": {
+        "knowledge_type": "conceptual",
+        "entities": [
+          {
+            "name": "cost_of_error_matrix",
+            "type": "concept"
+          },
+          {
+            "name": "autonomy_window",
+            "type": "concept"
+          },
+          {
+            "name": "agent_oversight_controls",
+            "type": "concept"
+          },
+          {
+            "name": "supervised_mode",
+            "type": "concept"
+          },
+          {
+            "name": "evaluation_benchmarks",
+            "type": "concept"
+          },
+          {
+            "name": "quick_win",
+            "type": "concept"
+          },
+          {
+            "name": "pilot_lab",
+            "type": "concept"
+          },
+          {
+            "name": "efficiency_engine",
+            "type": "concept"
+          },
+          {
+            "name": "strategic_tier",
+            "type": "concept"
+          },
+          {
+            "name": "sponsor_approval",
+            "type": "prerequisite"
+          },
+          {
+            "name": "thirty_day_review",
+            "type": "prerequisite"
+          },
+          {
+            "name": "agent_activation",
+            "type": "outcome"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "cost_of_error_matrix",
+            "type": "enables",
+            "target": "autonomy_window"
+          },
+          {
+            "source": "autonomy_window",
+            "type": "enables",
+            "target": "agent_oversight_controls"
+          },
+          {
+            "source": "agent_oversight_controls",
+            "type": "enables",
+            "target": "supervised_mode"
+          },
+          {
+            "source": "agent_oversight_controls",
+            "type": "enables",
+            "target": "evaluation_benchmarks"
+          },
+          {
+            "source": "evaluation_benchmarks",
+            "type": "requires",
+            "target": "sponsor_approval"
+          },
+          {
+            "source": "thirty_day_review",
+            "type": "requires",
+            "target": "sponsor_approval"
+          },
+          {
+            "source": "agent_oversight_controls",
+            "type": "impacts",
+            "target": "agent_activation",
+            "properties": {
+              "direction": "negative",
+              "severity": "high"
+            }
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "source": "agent_oversight_controls",
+            "relationship_type": "tradeoff",
+            "target": "agent_activation",
+            "reason": "missing explicit tradeoff details between oversight controls and activation outcomes"
+          }
+        ]
+      }
+    }
+  ]
+}

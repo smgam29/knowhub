@@ -1,0 +1,123 @@
+{
+  "model": "gpt-oss:20b",
+  "excerpt": "excerpt_2",
+  "expected_knowledge_type": "Diagnostic",
+  "runs": [
+    {
+      "run": 1,
+      "success": true,
+      "output": {
+        "knowledge_type": "Procedural",
+        "entities": [
+          {
+            "name": "agent",
+            "type": "Product"
+          },
+          {
+            "name": "glideRecordSecure",
+            "type": "Feature"
+          },
+          {
+            "name": "glideRecord",
+            "type": "Feature"
+          },
+          {
+            "name": "analytics dashboard",
+            "type": "Feature"
+          },
+          {
+            "name": "configure analytics dashboard",
+            "type": "Decision",
+            "decision_type": "Configuration"
+          },
+          {
+            "name": "use verification gates after major step",
+            "type": "Decision",
+            "decision_type": "Process"
+          },
+          {
+            "name": "use glideRecord in tool scripts",
+            "type": "Decision",
+            "decision_type": "Architecture"
+          },
+          {
+            "name": "start with 3-5 topics maximum",
+            "type": "Decision",
+            "decision_type": "Process"
+          },
+          {
+            "name": "minimum two uat cycles",
+            "type": "Decision",
+            "decision_type": "Process"
+          },
+          {
+            "name": "configure deflection tracking before go-live",
+            "type": "Decision",
+            "decision_type": "Configuration"
+          },
+          {
+            "name": "make surgical prompt edits",
+            "type": "Decision",
+            "decision_type": "Process"
+          },
+          {
+            "name": "empty result recovery instructions",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "prompt bloat",
+            "type": "Concept"
+          },
+          {
+            "name": "empty result handling",
+            "type": "Concept"
+          },
+          {
+            "name": "using glideRecordSecure issue",
+            "type": "Concept"
+          },
+          {
+            "name": "skipping UAT",
+            "type": "Concept"
+          },
+          {
+            "name": "vague topic boundaries",
+            "type": "Concept"
+          },
+          {
+            "name": "deflection tracking",
+            "type": "Concept"
+          },
+          {
+            "name": "overscoping first agent",
+            "type": "Concept"
+          },
+          {
+            "name": "missing null checks",
+            "type": "Concept"
+          },
+          {
+            "name": "verification gates",
+            "type": "Concept"
+          },
+          {
+            "name": "demo quality mindset",
+            "type": "Concept"
+          }
+        ],
+        "relationships": [],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "run": 2,
+      "success": false,
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    },
+    {
+      "run": 3,
+      "success": false,
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    }
+  ]
+}

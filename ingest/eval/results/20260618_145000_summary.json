@@ -1,0 +1,47 @@
+[
+  {
+    "model": "qwen3:8b",
+    "excerpt": "excerpt_1",
+    "output_file": "/Users/scott/Documents/github/knowhub/ingest/eval/results/20260618_145000_excerpt_1_qwen3_8b.json"
+  },
+  {
+    "model": "gpt-oss:20b",
+    "excerpt": "excerpt_1",
+    "output_file": "/Users/scott/Documents/github/knowhub/ingest/eval/results/20260618_145000_excerpt_1_gpt-oss_20b.json"
+  },
+  {
+    "model": "phi4:14b",
+    "excerpt": "excerpt_1",
+    "output_file": "/Users/scott/Documents/github/knowhub/ingest/eval/results/20260618_145000_excerpt_1_phi4_14b.json"
+  },
+  {
+    "model": "qwen3:8b",
+    "excerpt": "excerpt_2",
+    "output_file": "/Users/scott/Documents/github/knowhub/ingest/eval/results/20260618_145000_excerpt_2_qwen3_8b.json"
+  },
+  {
+    "model": "gpt-oss:20b",
+    "excerpt": "excerpt_2",
+    "output_file": "/Users/scott/Documents/github/knowhub/ingest/eval/results/20260618_145000_excerpt_2_gpt-oss_20b.json"
+  },
+  {
+    "model": "phi4:14b",
+    "excerpt": "excerpt_2",
+    "output_file": "/Users/scott/Documents/github/knowhub/ingest/eval/results/20260618_145000_excerpt_2_phi4_14b.json"
+  },
+  {
+    "model": "qwen3:8b",
+    "excerpt": "excerpt_3",
+    "output_file": "/Users/scott/Documents/github/knowhub/ingest/eval/results/20260618_145000_excerpt_3_qwen3_8b.json"
+  },
+  {
+    "model": "gpt-oss:20b",
+    "excerpt": "excerpt_3",
+    "output_file": "/Users/scott/Documents/github/knowhub/ingest/eval/results/20260618_145000_excerpt_3_gpt-oss_20b.json"
+  },
+  {
+    "model": "phi4:14b",
+    "excerpt": "excerpt_3",
+    "output_file": "/Users/scott/Documents/github/knowhub/ingest/eval/results/20260618_145000_excerpt_3_phi4_14b.json"
+  }
+]

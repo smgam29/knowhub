@@ -1,0 +1,449 @@
+{
+  "model": "qwen3:8b",
+  "excerpt": "excerpt_2",
+  "expected_knowledge_type": "Diagnostic",
+  "runs": [
+    {
+      "run": 1,
+      "success": true,
+      "output": {
+        "knowledge_type": "procedural",
+        "entities": [
+          {
+            "name": "prompt_bloat",
+            "type": "concept"
+          },
+          {
+            "name": "empty_result_handling",
+            "type": "feature"
+          },
+          {
+            "name": "glideresult",
+            "type": "product"
+          },
+          {
+            "name": "glideresord_secure",
+            "type": "product"
+          },
+          {
+            "name": "uat_cycles",
+            "type": "prerequisite"
+          },
+          {
+            "name": "deflection_tracking",
+            "type": "feature"
+          },
+          {
+            "name": "verification_gates",
+            "type": "decision"
+          },
+          {
+            "name": "null_checks",
+            "type": "decision"
+          },
+          {
+            "name": "empty_result_recovery",
+            "type": "decision"
+          },
+          {
+            "name": "surgical_edits",
+            "type": "decision"
+          },
+          {
+            "name": "test_edge_cases",
+            "type": "decision"
+          },
+          {
+            "name": "demo_quality_mindset",
+            "type": "concept"
+          },
+          {
+            "name": "production_quality",
+            "type": "outcome"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "empty_result_recovery",
+            "type": "enables",
+            "target": "avoid_hallucination"
+          },
+          {
+            "source": "surgical_edits",
+            "type": "enables",
+            "target": "avoid_prompt_bloat"
+          },
+          {
+            "source": "use_glide_record",
+            "type": "enables",
+            "target": "avoid_script_crash"
+          },
+          {
+            "source": "add_verification_gates",
+            "type": "enables",
+            "target": "avoid_incomplete_data"
+          },
+          {
+            "source": "conduct_uat_cycles",
+            "type": "enables",
+            "target": "ensure_production_quality"
+          },
+          {
+            "source": "configure_deflection_tracking",
+            "type": "enables",
+            "target": "ensure_production_quality"
+          },
+          {
+            "source": "test_edge_cases",
+            "type": "enables",
+            "target": "ensure_production_quality"
+          },
+          {
+            "source": "avoid_bulk_guardrails",
+            "type": "enables",
+            "target": "ensure_production_quality"
+          },
+          {
+            "source": "include_empty_result_recovery",
+            "type": "requires",
+            "target": "empty_result_handling"
+          },
+          {
+            "source": "use_glide_record",
+            "type": "requires",
+            "target": "glideresult"
+          },
+          {
+            "source": "configure_deflection_tracking",
+            "type": "requires",
+            "target": "deflection_tracking"
+          },
+          {
+            "source": "surgical_edits",
+            "type": "recommends_when",
+            "target": "prompt_bloat",
+            "properties": {
+              "context": "prompt_bloat",
+              "confidence": "high"
+            }
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "source": "glideresord_secure",
+            "relationship_type": "conflicts_with",
+            "target": "glideresult",
+            "reason": "session acl issues"
+          }
+        ]
+      }
+    },
+    {
+      "run": 2,
+      "success": true,
+      "output": {
+        "knowledge_type": "procedural",
+        "entities": [
+          {
+            "name": "prompt bloat",
+            "type": "decision"
+          },
+          {
+            "name": "no empty result handling",
+            "type": "decision"
+          },
+          {
+            "name": "using gliderecordsecure",
+            "type": "decision"
+          },
+          {
+            "name": "skipping uat",
+            "type": "decision"
+          },
+          {
+            "name": "vague topic boundaries",
+            "type": "decision"
+          },
+          {
+            "name": "no deflection tracking",
+            "type": "decision"
+          },
+          {
+            "name": "over-scoping the first agent",
+            "type": "decision"
+          },
+          {
+            "name": "missing null checks",
+            "type": "decision"
+          },
+          {
+            "name": "no verification gates",
+            "type": "decision"
+          },
+          {
+            "name": "demo-quality mindset",
+            "type": "decision"
+          },
+          {
+            "name": "empty result recovery",
+            "type": "feature"
+          },
+          {
+            "name": "gliderecord",
+            "type": "feature"
+          },
+          {
+            "name": "verification gates",
+            "type": "feature"
+          },
+          {
+            "name": "analytics dashboard",
+            "type": "feature"
+          },
+          {
+            "name": "deflection tracking",
+            "type": "feature"
+          },
+          {
+            "name": "uats",
+            "type": "prerequisite"
+          },
+          {
+            "name": "precise action keywords",
+            "type": "feature"
+          },
+          {
+            "name": "null checks",
+            "type": "feature"
+          },
+          {
+            "name": "edge cases testing",
+            "type": "feature"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "prompt bloat",
+            "type": "recommended_when",
+            "target": "empty result recovery"
+          },
+          {
+            "source": "no empty result handling",
+            "type": "recommended_when",
+            "target": "empty result recovery"
+          },
+          {
+            "source": "using gliderecordsecure",
+            "type": "conflicts_with",
+            "target": "gliderecord"
+          },
+          {
+            "source": "skipping uat",
+            "type": "recommended_when",
+            "target": "uats"
+          },
+          {
+            "source": "vague topic boundaries",
+            "type": "recommended_when",
+            "target": "deflection tracking"
+          },
+          {
+            "source": "no deflection tracking",
+            "type": "recommended_when",
+            "target": "analytics dashboard"
+          },
+          {
+            "source": "over-scoping the first agent",
+            "type": "recommended_when",
+            "target": "uats"
+          },
+          {
+            "source": "missing null checks",
+            "type": "recommended_when",
+            "target": "null checks"
+          },
+          {
+            "source": "no verification gates",
+            "type": "recommended_when",
+            "target": "verification gates"
+          },
+          {
+            "source": "demo-quality mindset",
+            "type": "recommended_when",
+            "target": "edge cases testing"
+          },
+          {
+            "source": "demo-quality mindset",
+            "type": "recommended_when",
+            "target": "precise action keywords"
+          },
+          {
+            "source": "no verification gates",
+            "type": "recommended_when",
+            "target": "verification gates"
+          },
+          {
+            "source": "no empty result handling",
+            "type": "recommended_when",
+            "target": "empty result recovery"
+          },
+          {
+            "source": "using gliderecordsecure",
+            "type": "conflicts_with",
+            "target": "gliderecord"
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "source": "demo-quality mindset",
+            "relationship_type": "tradeoff",
+            "target": "production quality",
+            "reason": "no gives/costs specified"
+          }
+        ]
+      }
+    },
+    {
+      "run": 3,
+      "success": true,
+      "output": {
+        "knowledge_type": "procedural",
+        "entities": [
+          {
+            "name": "agent",
+            "type": "product"
+          },
+          {
+            "name": "empty_result_recovery",
+            "type": "feature"
+          },
+          {
+            "name": "verification_gates",
+            "type": "feature"
+          },
+          {
+            "name": "uat_cycles",
+            "type": "prerequisite"
+          },
+          {
+            "name": "deflection_tracking",
+            "type": "feature"
+          },
+          {
+            "name": "precise_action_keywords",
+            "type": "feature"
+          },
+          {
+            "name": "gliderecord",
+            "type": "feature"
+          },
+          {
+            "name": "gliderecordsecure",
+            "type": "feature"
+          },
+          {
+            "name": "surgical_prompt_edits",
+            "type": "decision"
+          },
+          {
+            "name": "null_checks",
+            "type": "feature"
+          },
+          {
+            "name": "configuration_dashboard",
+            "type": "outcome"
+          },
+          {
+            "name": "deflection_proof",
+            "type": "outcome"
+          },
+          {
+            "name": "edge_case_testing",
+            "type": "outcome"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "surgical_prompt_edits",
+            "type": "recommends_when",
+            "target": "empty_result_recovery"
+          },
+          {
+            "source": "surgical_prompt_edits",
+            "type": "recommends_when",
+            "target": "verification_gates"
+          },
+          {
+            "source": "surgical_prompt_edits",
+            "type": "recommends_when",
+            "target": "deflection_tracking"
+          },
+          {
+            "source": "surgical_prompt_edits",
+            "type": "recommends_when",
+            "target": "precise_action_keywords"
+          },
+          {
+            "source": "surgical_prompt_edits",
+            "type": "recommends_when",
+            "target": "gliderecord"
+          },
+          {
+            "source": "surgical_prompt_edits",
+            "type": "recommends_when",
+            "target": "uat_cycles"
+          },
+          {
+            "source": "surgical_prompt_edits",
+            "type": "recommends_when",
+            "target": "null_checks"
+          },
+          {
+            "source": "verification_gates",
+            "type": "enables",
+            "target": "deflection_proof"
+          },
+          {
+            "source": "gliderecordsecure",
+            "type": "conflicts_with",
+            "target": "gliderecord"
+          },
+          {
+            "source": "gliderecordsecure",
+            "type": "conflicts_with",
+            "target": "verification_gates"
+          },
+          {
+            "source": "uat_cycles",
+            "type": "requires",
+            "target": "deflection_tracking"
+          },
+          {
+            "source": "configuration_dashboard",
+            "type": "produces",
+            "target": "deflection_proof"
+          },
+          {
+            "source": "surgical_prompt_edits",
+            "type": "recommends_when",
+            "target": "edge_case_testing"
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "source": "gliderecordsecure",
+            "relationship_type": "conflicts_with",
+            "target": "gliderecord",
+            "reason": "no explicit cost/benefit analysis provided"
+          },
+          {
+            "source": "surgical_prompt_edits",
+            "relationship_type": "recommends_when",
+            "target": "edge_case_testing",
+            "reason": "no confidence level specified"
+          }
+        ]
+      }
+    }
+  ]
+}

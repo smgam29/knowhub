@@ -1,0 +1,255 @@
+{
+  "model": "qwen3:8b",
+  "excerpt": "excerpt_3",
+  "expected_knowledge_type": "Contextual",
+  "runs": [
+    {
+      "run": 1,
+      "success": true,
+      "output": {
+        "knowledge_type": "procedural",
+        "entities": [
+          {
+            "name": "now assist guardian configuration",
+            "type": "decision"
+          },
+          {
+            "name": "compliance legal security requirement",
+            "type": "prerequisite"
+          },
+          {
+            "name": "project sponsor",
+            "type": "persona"
+          },
+          {
+            "name": "filters active",
+            "type": "outcome"
+          },
+          {
+            "name": "guardian",
+            "type": "feature"
+          },
+          {
+            "name": "latency",
+            "type": "concept"
+          },
+          {
+            "name": "false positives",
+            "type": "concept"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "now assist guardian configuration",
+            "type": "requires",
+            "target": "compliance legal security requirement"
+          },
+          {
+            "source": "now assist guardian configuration",
+            "type": "impacts",
+            "target": "filters active",
+            "direction": "negative",
+            "severity": "high"
+          },
+          {
+            "source": "now assist guardian configuration",
+            "type": "recommended_when",
+            "target": "compliance legal security requirement",
+            "context": "explicit compliance legal security requirement",
+            "confidence": "high"
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "source": "now assist guardian configuration",
+            "relationship_type": "tradeoff",
+            "target": "filters active",
+            "reason": "only costs (latency and false positives) mentioned, no explicit benefits provided"
+          }
+        ]
+      }
+    },
+    {
+      "run": 2,
+      "success": true,
+      "output": {
+        "knowledge_type": "procedural",
+        "entities": [
+          {
+            "name": "now assist guardian configuration",
+            "type": "feature"
+          },
+          {
+            "name": "project sponsor",
+            "type": "persona"
+          },
+          {
+            "name": "compliance legal security requirement",
+            "type": "decision"
+          },
+          {
+            "name": "offensiveness filter",
+            "type": "feature"
+          },
+          {
+            "name": "prompt injection detection",
+            "type": "feature"
+          },
+          {
+            "name": "sensitivity detection",
+            "type": "feature"
+          },
+          {
+            "name": "guardian dashboard",
+            "type": "concept"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "now assist guardian configuration",
+            "type": "requires",
+            "target": "compliance legal security requirement"
+          },
+          {
+            "source": "compliance legal security requirement",
+            "type": "enables",
+            "target": "now assist guardian configuration"
+          },
+          {
+            "source": "compliance legal security requirement",
+            "type": "recommended_when",
+            "target": "now assist guardian configuration",
+            "properties": {
+              "context": "explicit compliance legal or security policy",
+              "confidence": "high"
+            }
+          },
+          {
+            "source": "now assist guardian configuration",
+            "type": "performed_by",
+            "target": "project sponsor"
+          },
+          {
+            "source": "now assist guardian configuration",
+            "type": "impacts",
+            "target": "latency and false positives",
+            "properties": {
+              "direction": "negative",
+              "severity": "high"
+            }
+          },
+          {
+            "source": "now assist guardian configuration",
+            "type": "produces",
+            "target": "validation confirmation",
+            "properties": {
+              "likelihood": "high",
+              "notes": "dashboard verification"
+            }
+          }
+        ],
+        "knowledge_gaps": [
+          {
+            "source": "now assist guardian configuration",
+            "relationship_type": "tradeoff",
+            "target": "latency and false positives",
+            "reason": "requires explicit confirmation of tradeoff factors"
+          }
+        ]
+      }
+    },
+    {
+      "run": 3,
+      "success": true,
+      "output": {
+        "knowledge_type": "procedural",
+        "entities": [
+          {
+            "name": "now assist guardian configuration",
+            "type": "feature"
+          },
+          {
+            "name": "enable guardian only if required",
+            "type": "decision",
+            "decision_type": "configuration"
+          },
+          {
+            "name": "compliance legal security requirement",
+            "type": "prerequisite"
+          },
+          {
+            "name": "project sponsor confirmation",
+            "type": "prerequisite"
+          },
+          {
+            "name": "customer acceptance of latency",
+            "type": "prerequisite"
+          },
+          {
+            "name": "customer acceptance of false positives",
+            "type": "prerequisite"
+          },
+          {
+            "name": "guardian configuration outcome",
+            "type": "outcome"
+          },
+          {
+            "name": "project sponsor",
+            "type": "persona"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "enable guardian only if required",
+            "type": "requires",
+            "target": "compliance legal security requirement"
+          },
+          {
+            "source": "enable guardian only if required",
+            "type": "requires",
+            "target": "project sponsor confirmation"
+          },
+          {
+            "source": "enable guardian only if required",
+            "type": "requires",
+            "target": "customer acceptance of latency"
+          },
+          {
+            "source": "enable guardian only if required",
+            "type": "requires",
+            "target": "customer acceptance of false positives"
+          },
+          {
+            "source": "enable guardian only if required",
+            "type": "enables",
+            "target": "guardian configuration outcome"
+          },
+          {
+            "source": "enable guardian only if required",
+            "type": "impacts",
+            "target": "guardian configuration outcome",
+            "direction": "negative",
+            "severity": "high"
+          },
+          {
+            "source": "enable guardian only if required",
+            "type": "tradeoff",
+            "target": "guardian configuration outcome",
+            "gives": "compliance",
+            "costs": "latency, false positives",
+            "severity": "high",
+            "context": "ai content filtering"
+          },
+          {
+            "source": "enable guardian only if required",
+            "type": "recommended_when",
+            "target": "compliance legal security requirement",
+            "context": "explicit compliance requirement",
+            "confidence": "medium"
+          }
+        ],
+        "knowledge_gaps": []
+      }
+    }
+  ]
+}

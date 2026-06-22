@@ -7,13 +7,13 @@ import sys
 from crawler import get_markdown_files
 from consensus import ConsensusExtractor
 from extractors.claude import ClaudeExtractor
-from extractors.gemma import GemmaExtractor
+from extractors.phi4 import Phi4Extractor
 from reconcilers.mistral import MistralReconciler
 from loader import write_to_neo4j, driver
 
 # Configure the pipeline
 extractor = ConsensusExtractor(
-    extractors=[ClaudeExtractor(), GemmaExtractor()],
+    extractors=[ClaudeExtractor(), Phi4Extractor()],
     reconciler=MistralReconciler(),
     runs_per_model=2
 )

@@ -1,0 +1,228 @@
+{
+  "model": "gpt-oss:20b",
+  "excerpt": "excerpt_1",
+  "expected_knowledge_type": "Comparative",
+  "runs": [
+    {
+      "run": 1,
+      "success": true,
+      "output": {
+        "knowledge_type": "Procedural",
+        "entities": [
+          {
+            "name": "ai_agent",
+            "type": "Product"
+          },
+          {
+            "name": "autonomy_window",
+            "type": "Feature"
+          },
+          {
+            "name": "cost_of_error_matrix",
+            "type": "Feature"
+          },
+          {
+            "name": "supervised_mode",
+            "type": "Feature"
+          },
+          {
+            "name": "evaluation_benchmarks",
+            "type": "Feature"
+          },
+          {
+            "name": "assign_autonomy_window",
+            "type": "Decision",
+            "decision_type": "process"
+          },
+          {
+            "name": "set_supervised_mode",
+            "type": "Decision",
+            "decision_type": "configuration"
+          },
+          {
+            "name": "evaluate_scores",
+            "type": "Decision",
+            "decision_type": "governance"
+          },
+          {
+            "name": "approve_sponsor_signoff",
+            "type": "Decision",
+            "decision_type": "governance"
+          },
+          {
+            "name": "sponsor",
+            "type": "Persona"
+          },
+          {
+            "name": "human",
+            "type": "Persona"
+          },
+          {
+            "name": "agent",
+            "type": "Persona"
+          },
+          {
+            "name": "documentation_signed",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "thirty_day_review",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "sponsor_signoff",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "reduced_errors",
+            "type": "Outcome"
+          },
+          {
+            "name": "compliance_achieved",
+            "type": "Outcome"
+          },
+          {
+            "name": "operational_interdependence",
+            "type": "Concept"
+          },
+          {
+            "name": "cost_of_error_classification",
+            "type": "Concept"
+          },
+          {
+            "name": "business_impact_thresholds",
+            "type": "Concept"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "assign_autonomy_window",
+            "type": "PRODUCES",
+            "target": "reduced_errors"
+          },
+          {
+            "source": "set_supervised_mode",
+            "type": "PRODUCES",
+            "target": "compliance_achieved"
+          },
+          {
+            "source": "evaluate_scores",
+            "type": "PRODUCES",
+            "target": "compliance_achieved"
+          },
+          {
+            "source": "supervised_mode",
+            "type": "PERFORMED_BY",
+            "target": "sponsor"
+          }
+        ],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "run": 2,
+      "success": true,
+      "output": {
+        "knowledge_type": "Conceptual",
+        "entities": [
+          {
+            "name": "ai_agent_guided_setup",
+            "type": "Product"
+          },
+          {
+            "name": "supervised_mode",
+            "type": "Feature"
+          },
+          {
+            "name": "cost_of_error_matrix",
+            "type": "Concept"
+          },
+          {
+            "name": "autonomy_window",
+            "type": "Concept"
+          },
+          {
+            "name": "agent_oversight_controls",
+            "type": "Concept"
+          },
+          {
+            "name": "evaluation_score_benchmarks",
+            "type": "Concept"
+          },
+          {
+            "name": "assign_autonomy_window",
+            "type": "Decision",
+            "decision_type": "Configuration"
+          },
+          {
+            "name": "set_evaluation_benchmark",
+            "type": "Decision",
+            "decision_type": "Governance"
+          },
+          {
+            "name": "30_day_review",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "sponsor_sign_off",
+            "type": "Prerequisite"
+          },
+          {
+            "name": "sponsor",
+            "type": "Persona"
+          },
+          {
+            "name": "human_reviewer",
+            "type": "Persona"
+          },
+          {
+            "name": "agent",
+            "type": "Persona"
+          },
+          {
+            "name": "agent_oversight_controls_required",
+            "type": "Outcome"
+          }
+        ],
+        "relationships": [
+          {
+            "source": "assign_autonomy_window",
+            "type": "REQUIRES",
+            "target": "30_day_review"
+          },
+          {
+            "source": "assign_autonomy_window",
+            "type": "REQUIRES",
+            "target": "sponsor_sign_off"
+          },
+          {
+            "source": "set_evaluation_benchmark",
+            "type": "REQUIRES",
+            "target": "sponsor_sign_off"
+          },
+          {
+            "source": "supervised_mode",
+            "type": "ENABLES",
+            "target": "agent_oversight_controls_required"
+          },
+          {
+            "source": "set_evaluation_benchmark",
+            "type": "ENABLES",
+            "target": "evaluation_score_benchmarks"
+          },
+          {
+            "source": "assign_autonomy_window",
+            "type": "ENABLES",
+            "target": "agent_oversight_controls_required"
+          }
+        ],
+        "knowledge_gaps": []
+      }
+    },
+    {
+      "run": 3,
+      "success": false,
+      "error": "Expecting value: line 1 column 1 (char 0)"
+    }
+  ]
+}
