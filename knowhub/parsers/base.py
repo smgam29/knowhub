@@ -36,7 +36,7 @@ class ParsedChunk:
         default_factory=lambda: ChunkEvidence(source="parser_native")
     )
 
-    def render_for_extraction(self) -> str:
+    def render_for_extraction(self, include_evidence: bool = False) -> str:
         """Render semantic chunk context for an extraction prompt."""
         lines = [f"[{self.kind.upper()}"]
         if self.role != "unknown":
@@ -47,7 +47,11 @@ class ParsedChunk:
             lines.append(f"Heading: {' > '.join(self.heading_path)}")
         if self.page_number is not None:
             lines.append(f"Page: {self.page_number}")
-        lines.append(f"Evidence: {self.evidence.source}:{self.evidence.detail}")
+        if include_evidence:
+            lines.append(
+                f"Parser evidence (not source content): "
+                f"{self.evidence.source}:{self.evidence.detail}"
+            )
         lines.append("")
         lines.append(self.text)
 

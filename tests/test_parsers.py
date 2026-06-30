@@ -27,7 +27,15 @@ class ParserTests(unittest.TestCase):
         self.assertIn("[CALLOUT role=warning]", rendered)
         self.assertIn("Heading: Now Assist > Limitations", rendered)
         self.assertIn("Page: 7", rendered)
-        self.assertIn("Evidence: deterministic_rule:text_prefix_warning", rendered)
+        self.assertNotIn("deterministic_rule:text_prefix_warning", rendered)
+
+        rendered_with_evidence = chunk.render_for_extraction(include_evidence=True)
+
+        self.assertIn(
+            "Parser evidence (not source content): "
+            "deterministic_rule:text_prefix_warning",
+            rendered_with_evidence,
+        )
 
     def test_plain_text_parser_outputs_chunks(self):
         with tempfile.TemporaryDirectory() as tmp:
