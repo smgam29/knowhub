@@ -9,6 +9,12 @@ from knowhub.parsers.plain_text import PlainTextParser
 
 
 def _response(model_specific_property):
+    properties = {
+        "gives": "speed",
+        "costs": "maintenance",
+    }
+    properties.update(model_specific_property)
+
     return json.dumps(
         {
             "reasoning": "An implementer would choose between implementation approaches.",
@@ -22,7 +28,7 @@ def _response(model_specific_property):
                     "source": "Prompt customization",
                     "type": "TRADEOFF",
                     "target": "Maintenance overhead",
-                    "properties": model_specific_property,
+                    "properties": properties,
                 }
             ],
             "knowledge_gaps": [],

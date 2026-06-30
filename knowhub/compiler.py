@@ -10,6 +10,7 @@ from knowhub.extraction import KnowledgeExtractor
 from knowhub.llms.base import LLMClient
 from knowhub.parsers.base import DocumentParser
 from knowhub.schema import KnowledgeArtifact
+from knowhub.validation import validate_artifact
 
 
 @dataclass
@@ -68,9 +69,11 @@ def compile_file_with_candidates(
     for client in llm_clients:
         if verbose:
             print(f"Extracting {parsed.source_path} with {client.name}...")
-        candidates.append(
-            KnowledgeExtractor(client).extract_text(parsed.source_path, parsed.text)
+        extracted = KnowledgeExtractor(client).extract_text(
+            parsed.source_path,
+            parsed.text,
         )
+        candidates.append(validate_artifact(extracted))
 
     artifact = confirm_artifacts(
         parsed.source_path,
