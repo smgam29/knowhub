@@ -24,6 +24,10 @@ class LLMClient(ABC):
         """Allow model-specific prompt nudges without changing core prompts."""
         return prompt
 
+    @property
+    def prompt_profile(self) -> str:
+        return "frontier"
+
     @abstractmethod
     def generate(self, prompt: str) -> LLMResponse:
         pass

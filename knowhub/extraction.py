@@ -32,7 +32,9 @@ class KnowledgeExtractor:
         self.client = client
 
     def extract_text(self, source_path: str, text: str) -> KnowledgeArtifact:
-        prompt = self.client.prepare_prompt(build_extraction_prompt(text))
+        prompt = self.client.prepare_prompt(
+            build_extraction_prompt(text, profile=self.client.prompt_profile)
+        )
         response = self.client.generate(prompt)
         raw = parse_json_response(response.text)
         artifact = KnowledgeArtifact.from_extraction(source_path, raw)

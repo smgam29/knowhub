@@ -15,16 +15,22 @@ class OllamaClient(LLMClient):
         temperature: float = 0.1,
         prompt_hint: str = "Return compact valid JSON only. Do not use markdown fences.",
         timeout: int = 600,
+        prompt_profile: str = "local_reasoning",
     ):
         self.model = model
         self.url = url
         self.temperature = temperature
         self.prompt_hint = prompt_hint
         self.timeout = timeout
+        self._prompt_profile = prompt_profile
 
     @property
     def name(self) -> str:
         return self.model
+
+    @property
+    def prompt_profile(self) -> str:
+        return self._prompt_profile
 
     def prepare_prompt(self, prompt: str) -> str:
         return f"{self.prompt_hint}\n\n{prompt}"
