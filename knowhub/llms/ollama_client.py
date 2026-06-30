@@ -14,11 +14,13 @@ class OllamaClient(LLMClient):
         url: str = "http://localhost:11434/api/generate",
         temperature: float = 0.1,
         prompt_hint: str = "Return compact valid JSON only. Do not use markdown fences.",
+        timeout: int = 600,
     ):
         self.model = model
         self.url = url
         self.temperature = temperature
         self.prompt_hint = prompt_hint
+        self.timeout = timeout
 
     @property
     def name(self) -> str:
@@ -36,7 +38,7 @@ class OllamaClient(LLMClient):
                 "prompt": prompt,
                 "stream": False,
             },
-            timeout=120,
+            timeout=self.timeout,
         )
         response.raise_for_status()
         return LLMResponse(

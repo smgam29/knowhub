@@ -33,14 +33,18 @@ def compile_file(
     llm_clients: list[LLMClient],
     min_support: int = 2,
     allow_single_llm_for_testing: bool = False,
+    verbose: bool = False,
 ) -> KnowledgeArtifact:
     """Parse one file, extract with multiple LLMs, and confirm relationships."""
     _validate_llm_count(llm_clients, allow_single_llm_for_testing)
     parsed = parser.parse(file_path)
-    candidates = [
-        KnowledgeExtractor(client).extract_text(parsed.source_path, parsed.text)
-        for client in llm_clients
-    ]
+    candidates = []
+    for client in llm_clients:
+        if verbose:
+            print(f"Extracting {parsed.source_path} with {client.name}...")
+        candidates.append(
+            KnowledgeExtractor(client).extract_text(parsed.source_path, parsed.text)
+        )
 
     return confirm_artifacts(
         parsed.source_path,
@@ -56,6 +60,7 @@ def compile_directory(
     suffixes: set[str] | None = None,
     min_support: int = 2,
     allow_single_llm_for_testing: bool = False,
+    verbose: bool = False,
 ) -> list[KnowledgeArtifact]:
     """Compile all matching files in a directory tree."""
     _validate_llm_count(llm_clients, allow_single_llm_for_testing)
@@ -74,6 +79,7 @@ def compile_directory(
                 llm_clients=llm_clients,
                 min_support=min_support,
                 allow_single_llm_for_testing=allow_single_llm_for_testing,
+                verbose=verbose,
             )
         )
 

@@ -59,7 +59,7 @@ def build_parser(name: str):
     raise ValueError(f"Unsupported parser: {name}")
 
 
-def build_llm_clients(names: list[str]):
+def build_llm_clients(names: list[str], ollama_timeout: int):
     clients = []
     for name in names:
         if name == "demo":
@@ -90,7 +90,12 @@ def build_llm_clients(names: list[str]):
         elif name == "anthropic":
             clients.append(AnthropicClient())
         elif name.startswith("ollama:"):
-            clients.append(OllamaClient(model=name.split(":", 1)[1]))
+            clients.append(
+                OllamaClient(
+                    model=name.split(":", 1)[1],
+                    timeout=ollama_timeout,
+                )
+            )
         else:
             raise ValueError(f"Unsupported LLM client: {name}")
     return clients
@@ -145,11 +150,22 @@ def main() -> None:
         default=2,
         help="Minimum distinct model support required for a relationship.",
     )
+    parser.add_argument(
+        "--ollama-timeout",
+        type=int,
+        default=600,
+        help="Read timeout in seconds for each Ollama model call.",
+    )
+    parser.add_argument(
+        "--verbose",
+        action="store_true",
+        help="Print progress before each model call.",
+    )
     args = parser.parse_args()
 
     input_path = Path(args.path)
     document_parser = build_parser(args.parser)
-    llm_clients = build_llm_clients(args.llm or ["demo"])
+    llm_clients = build_llm_clients(args.llm or ["demo"], args.ollama_timeout)
 
     if input_path.is_dir():
         artifacts = compile_directory(
@@ -157,6 +173,7 @@ def main() -> None:
             parser=document_parser,
             llm_clients=llm_clients,
             min_support=args.min_support,
+            verbose=args.verbose,
         )
     else:
         artifacts = [
@@ -165,6 +182,7 @@ def main() -> None:
                 parser=document_parser,
                 llm_clients=llm_clients,
                 min_support=args.min_support,
+                verbose=args.verbose,
             )
         ]
 
