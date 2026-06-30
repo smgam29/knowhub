@@ -22,3 +22,22 @@ def export_json(artifacts: list[KnowledgeArtifact], output_path: str | Path) -> 
     path = Path(output_path)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(render_json(artifacts) + "\n", encoding="utf-8")
+
+
+def render_candidates_json(candidates: list[KnowledgeArtifact]) -> str:
+    return json.dumps(
+        {
+            "candidates": [candidate.to_dict() for candidate in candidates],
+        },
+        indent=2,
+        ensure_ascii=False,
+    )
+
+
+def export_candidates_json(
+    candidates: list[KnowledgeArtifact],
+    output_path: str | Path,
+) -> None:
+    path = Path(output_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(render_candidates_json(candidates) + "\n", encoding="utf-8")

@@ -115,6 +115,52 @@ class ExtractionConfirmationTests(unittest.TestCase):
         self.assertEqual(relationship.properties["gives"], "speed")
         self.assertEqual(relationship.properties["costs"], "maintenance")
 
+    def test_confirmation_matches_compatible_entity_ids(self):
+        result_a = json.dumps(
+            {
+                "knowledge_type": "Comparative",
+                "entities": [
+                    {"id": "prompt_customization_pilot", "name": "Prompt customization for pilot", "type": "Decision"},
+                    {"id": "input_data_optimization", "name": "Input data optimization", "type": "Decision"},
+                ],
+                "relationships": [
+                    {
+                        "source_id": "prompt_customization_pilot",
+                        "relationship_type": "TRADEOFF",
+                        "target_id": "input_data_optimization",
+                        "properties": {"gives": "speed"},
+                    }
+                ],
+                "knowledge_gaps": [],
+            }
+        )
+        result_b = json.dumps(
+            {
+                "knowledge_type": "Comparative",
+                "entities": [
+                    {"id": "prompt_customization", "name": "Prompt customization", "type": "Decision"},
+                    {"id": "input_data_optimization", "name": "Input data optimization", "type": "Decision"},
+                ],
+                "relationships": [
+                    {
+                        "source_id": "prompt_customization",
+                        "relationship_type": "TRADEOFF",
+                        "target_id": "input_data_optimization",
+                        "properties": {"costs": "maintenance"},
+                    }
+                ],
+                "knowledge_gaps": [],
+            }
+        )
+
+        artifact_a = KnowledgeExtractor(StaticLLMClient("model-a", result_a)).extract_text("demo.md", "text")
+        artifact_b = KnowledgeExtractor(StaticLLMClient("model-b", result_b)).extract_text("demo.md", "text")
+
+        confirmed = confirm_artifacts("demo.md", [artifact_a, artifact_b], min_support=2)
+
+        self.assertEqual(len(confirmed.relationships), 1)
+        self.assertEqual(confirmed.relationships[0].confirmed_by, ["model-a", "model-b"])
+
 
 if __name__ == "__main__":
     unittest.main()

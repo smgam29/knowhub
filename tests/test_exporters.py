@@ -3,7 +3,12 @@ import unittest
 from pathlib import Path
 
 from knowhub.exporters.cypher import render_cypher
-from knowhub.exporters.json_exporter import export_json, render_json
+from knowhub.exporters.json_exporter import (
+    export_candidates_json,
+    export_json,
+    render_candidates_json,
+    render_json,
+)
 from knowhub.exporters.okf import export_okf
 from knowhub.schema import KnowledgeArtifact
 
@@ -52,6 +57,9 @@ class ExporterTests(unittest.TestCase):
         self.assertIn('"artifacts"', rendered_json)
         self.assertIn('"knowledge_type": "Comparative"', rendered_json)
 
+        candidates_json = render_candidates_json([artifact])
+        self.assertIn('"candidates"', candidates_json)
+
         with tempfile.TemporaryDirectory() as tmp:
             export_okf([artifact], tmp)
             root = Path(tmp)
@@ -64,6 +72,9 @@ class ExporterTests(unittest.TestCase):
 
             export_json([artifact], root / "artifact.json")
             self.assertTrue((root / "artifact.json").exists())
+
+            export_candidates_json([artifact], root / "candidates.json")
+            self.assertTrue((root / "candidates.json").exists())
 
 
 if __name__ == "__main__":

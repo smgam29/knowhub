@@ -6,9 +6,9 @@ import argparse
 import json
 from pathlib import Path
 
-from knowhub.compiler import compile_directory, compile_file
+from knowhub.compiler import compile_directory_with_candidates, compile_file_with_candidates
 from knowhub.exporters.cypher import render_cypher
-from knowhub.exporters.json_exporter import export_json
+from knowhub.exporters.json_exporter import export_candidates_json, export_json
 from knowhub.exporters.okf import export_okf
 from knowhub.llms.anthropic_client import AnthropicClient
 from knowhub.llms.ollama_client import OllamaClient
@@ -89,6 +89,8 @@ def build_llm_clients(names: list[str], ollama_timeout: int):
             )
         elif name == "anthropic":
             clients.append(AnthropicClient())
+        elif name.startswith("anthropic:"):
+            clients.append(AnthropicClient(model=name.split(":", 1)[1]))
         elif name.startswith("ollama:"):
             clients.append(
                 OllamaClient(
@@ -161,6 +163,11 @@ def main() -> None:
         action="store_true",
         help="Print progress before each model call.",
     )
+    parser.add_argument(
+        "--export-candidates",
+        action="store_true",
+        help="Write raw per-model candidate artifacts for debugging.",
+    )
     args = parser.parse_args()
 
     input_path = Path(args.path)
@@ -168,7 +175,7 @@ def main() -> None:
     llm_clients = build_llm_clients(args.llm or ["demo"], args.ollama_timeout)
 
     if input_path.is_dir():
-        artifacts = compile_directory(
+        results = compile_directory_with_candidates(
             str(input_path),
             parser=document_parser,
             llm_clients=llm_clients,
@@ -176,8 +183,8 @@ def main() -> None:
             verbose=args.verbose,
         )
     else:
-        artifacts = [
-            compile_file(
+        results = [
+            compile_file_with_candidates(
                 str(input_path),
                 parser=document_parser,
                 llm_clients=llm_clients,
@@ -186,7 +193,17 @@ def main() -> None:
             )
         ]
 
+    artifacts = [result.artifact for result in results]
+
     write_outputs(artifacts, Path(args.out), args.export)
+
+    if args.export_candidates:
+        candidates = [
+            candidate
+            for result in results
+            for candidate in result.candidates
+        ]
+        export_candidates_json(candidates, Path(args.out) / "candidates.json")
 
     relationship_count = sum(len(artifact.relationships) for artifact in artifacts)
     print(

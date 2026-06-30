@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from dataclasses import dataclass
 from pathlib import Path
 
 from knowhub.confirmation import confirm_artifacts
@@ -9,6 +10,12 @@ from knowhub.extraction import KnowledgeExtractor
 from knowhub.llms.base import LLMClient
 from knowhub.parsers.base import DocumentParser
 from knowhub.schema import KnowledgeArtifact
+
+
+@dataclass
+class CompileResult:
+    artifact: KnowledgeArtifact
+    candidates: list[KnowledgeArtifact]
 
 
 def _validate_llm_count(
@@ -36,6 +43,25 @@ def compile_file(
     verbose: bool = False,
 ) -> KnowledgeArtifact:
     """Parse one file, extract with multiple LLMs, and confirm relationships."""
+    return compile_file_with_candidates(
+        file_path,
+        parser=parser,
+        llm_clients=llm_clients,
+        min_support=min_support,
+        allow_single_llm_for_testing=allow_single_llm_for_testing,
+        verbose=verbose,
+    ).artifact
+
+
+def compile_file_with_candidates(
+    file_path: str,
+    parser: DocumentParser,
+    llm_clients: list[LLMClient],
+    min_support: int = 2,
+    allow_single_llm_for_testing: bool = False,
+    verbose: bool = False,
+) -> CompileResult:
+    """Parse one file and return confirmed plus per-model candidate artifacts."""
     _validate_llm_count(llm_clients, allow_single_llm_for_testing)
     parsed = parser.parse(file_path)
     candidates = []
@@ -46,11 +72,12 @@ def compile_file(
             KnowledgeExtractor(client).extract_text(parsed.source_path, parsed.text)
         )
 
-    return confirm_artifacts(
+    artifact = confirm_artifacts(
         parsed.source_path,
         candidates,
         min_support=min_support,
     )
+    return CompileResult(artifact=artifact, candidates=candidates)
 
 
 def compile_directory(
@@ -84,3 +111,36 @@ def compile_directory(
         )
 
     return artifacts
+
+
+def compile_directory_with_candidates(
+    directory: str,
+    parser: DocumentParser,
+    llm_clients: list[LLMClient],
+    suffixes: set[str] | None = None,
+    min_support: int = 2,
+    allow_single_llm_for_testing: bool = False,
+    verbose: bool = False,
+) -> list[CompileResult]:
+    """Compile all matching files and preserve per-model candidates."""
+    _validate_llm_count(llm_clients, allow_single_llm_for_testing)
+    allowed_suffixes = suffixes or {".md", ".txt", ".pdf", ".ppt", ".pptx"}
+    root = Path(directory)
+
+    results = []
+    for path in sorted(root.rglob("*")):
+        if not path.is_file() or path.suffix.lower() not in allowed_suffixes:
+            continue
+
+        results.append(
+            compile_file_with_candidates(
+                str(path),
+                parser=parser,
+                llm_clients=llm_clients,
+                min_support=min_support,
+                allow_single_llm_for_testing=allow_single_llm_for_testing,
+                verbose=verbose,
+            )
+        )
+
+    return results

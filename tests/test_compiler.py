@@ -3,7 +3,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from knowhub.compiler import compile_file
+from knowhub.compiler import compile_file, compile_file_with_candidates
 from knowhub.llms.static import StaticLLMClient
 from knowhub.parsers.plain_text import PlainTextParser
 
@@ -89,6 +89,27 @@ class CompilerTests(unittest.TestCase):
             artifact.relationships[0].confirmed_by,
             ["model-a", "model-b"],
         )
+
+    def test_compile_file_with_candidates_preserves_model_outputs(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "demo.txt"
+            path.write_text(
+                "Prompt customization is faster but creates maintenance overhead.",
+                encoding="utf-8",
+            )
+
+            result = compile_file_with_candidates(
+                str(path),
+                parser=PlainTextParser(),
+                llm_clients=[
+                    StaticLLMClient("model-a", _response({"gives": "speed"})),
+                    StaticLLMClient("model-b", _response({"costs": "maintenance"})),
+                ],
+                min_support=2,
+            )
+
+        self.assertEqual(len(result.candidates), 2)
+        self.assertEqual(len(result.artifact.relationships), 1)
 
 
 if __name__ == "__main__":

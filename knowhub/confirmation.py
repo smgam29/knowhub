@@ -7,6 +7,27 @@ from collections import Counter
 from knowhub.schema import Entity, KnowledgeArtifact, Relationship, SourceDocument
 
 
+def _compatible_id(left: str, right: str) -> bool:
+    if left == right:
+        return True
+    return left in right or right in left
+
+
+def _find_compatible_relationship(
+    relationships_by_key: dict[tuple[str, str, str], Relationship],
+    relationship: Relationship,
+) -> tuple[str, str, str] | None:
+    for key, existing in relationships_by_key.items():
+        if existing.relationship_type != relationship.relationship_type:
+            continue
+        if not _compatible_id(existing.source_id, relationship.source_id):
+            continue
+        if not _compatible_id(existing.target_id, relationship.target_id):
+            continue
+        return key
+    return None
+
+
 def confirm_artifacts(
     source_path: str,
     candidates: list[KnowledgeArtifact],
@@ -32,6 +53,14 @@ def confirm_artifacts(
 
         for relationship in artifact.relationships:
             key = relationship.fingerprint()
+            if key not in relationships_by_key:
+                compatible_key = _find_compatible_relationship(
+                    relationships_by_key,
+                    relationship,
+                )
+                if compatible_key is not None:
+                    key = compatible_key
+
             existing = relationships_by_key.get(key)
             if existing is None:
                 relationships_by_key[key] = Relationship(
