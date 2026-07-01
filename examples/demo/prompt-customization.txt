@@ -1,0 +1,5 @@
+Prompt customization is faster for a pilot, but it creates ongoing maintenance overhead.
+
+Use input data optimization when long-term summarization quality matters and you have time to remediate source data.
+
+Warning: do not customize out-of-box field labels without validating downstream summarization behavior.
